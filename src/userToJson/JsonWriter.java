@@ -3,10 +3,7 @@ package userToJson;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,9 +28,15 @@ public class JsonWriter {
 			throw new RuntimeException(e);
 		}
 
-
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(arrayUsers);
+
+
+
+
+		FileCreator fileCreator = new FileCreator();
+		fileCreator.createJsonFile(file,json);
+
 
 		System.out.println(json);
 	}
